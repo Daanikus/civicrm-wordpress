@@ -855,7 +855,7 @@ class CiviCRM_For_WordPress {
         $installLink
       );
 
-      if ($error == FALSE) {
+      if (!$error) {
         header( 'Location: ' . admin_url() . 'options-general.php?page=civicrm-install' );
         return FALSE;
       }
@@ -871,7 +871,7 @@ class CiviCRM_For_WordPress {
       }
 
       // Have we got it?
-      if ( $error == FALSE ) {
+      if ( !$error ) {
 
         // Set static flag
         $failure = TRUE;
@@ -1603,7 +1603,7 @@ class CiviCRM_For_WordPress {
     }
     // Replace 1st occurance of "CiviCRM" in the title
     $pos = strpos($title, 'CiviCRM');
-    if ($pos !== FALSE) {
+    if ($pos) {
       return substr_replace($title, $civicrm_wp_title, $pos, 7);
     }
     return $civicrm_wp_title;

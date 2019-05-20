@@ -314,13 +314,13 @@ class CiviCRM_For_WordPress_Shortcodes {
     $args = $this->preprocess_atts( $atts );
 
     // Sanity check for improperly constructed shortcode
-    if ( $args === FALSE ) {
+    if ( !$args ) {
       return '<p>' . __( 'Do not know how to handle this shortcode.', 'civicrm' ) . '</p>';
     }
 
     // invoke() requires environment variables to be set
     foreach ( $args as $key => $value ) {
-      if ( $value !== NULL ) {
+      if ( NULL !== $value ) {
         set_query_var($key, $value);
         $_REQUEST[$key] = $_GET[$key] = $value;
       }
@@ -367,7 +367,7 @@ class CiviCRM_For_WordPress_Shortcodes {
     $args = $this->preprocess_atts( $atts );
 
     // Sanity check for improperly constructed shortcode
-    if ( $args === FALSE ) {
+    if ( !$args ) {
       return '<p>' . __( 'Do not know how to handle this shortcode.', 'civicrm' ) . '</p>';
     }
 
@@ -375,7 +375,7 @@ class CiviCRM_For_WordPress_Shortcodes {
     $data = $this->get_data( $atts, $args );
 
     // Sanity check
-    if ( $data === FALSE ) return '';
+    if ( !$data ) return '';
 
     // Did we get a title?
     $title = __( 'Content via CiviCRM', 'civicrm' );
@@ -394,7 +394,7 @@ class CiviCRM_For_WordPress_Shortcodes {
     $config = CRM_Core_Config::singleton();
 
     // Do we have multiple shortcodes?
-    if ( $multiple != 0 ) {
+    if ( 10 != $multiple ) {
 
       $links = array();
       foreach( $args AS $var => $arg ) {
